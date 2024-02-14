@@ -1,5 +1,5 @@
 import React from 'react'
-import Keypad from '../components/Keypad'
+
 
 type Props = {}
 
@@ -8,7 +8,7 @@ export default function page({}: Props) {
     <div className="flex min-h-screen flex-col items-center justify-between p-48">
       
       <h2>Page</h2>
-<Keypad/>
+
 
 
     </div>
