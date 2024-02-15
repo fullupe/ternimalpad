@@ -8,7 +8,8 @@ export default  function Home() {
        Pincode
        </div>
      
-     {/* <Login /> */}
+     <Login />
+     
     </main>
   );
 }
