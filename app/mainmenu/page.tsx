@@ -1,55 +1,10 @@
 import React from 'react'
+import Keypad from '../components/Keypad'
 
 
 type Props = {}
 
-const games =[
-  {
-    id:1,
-    game:"Monday special",
-    date: new Date()
-  },
-  {
-    id:2,
-    game:"Clube Master",
-    date: new Date()
-  },
-  {
-    id:3,
-    game:"National east",
-    date: new Date()
-  },
-  {
-    id:4,
-    game:"Fortune east",
-    date: new Date()
-  },
-  {
-    id:5,
-    game:"Cross Rivers sp",
-    date: new Date()
-  },
-  {
-    id:6,
-    game:"LUcky NG east",
-    date: new Date()
-  },
-  {
-    id:7,
-    game:"Bonanza east",
-    date: new Date()
-  },
-  {
-    id:8,
-    game:"vag monday",
-    date: new Date()
-  },
-  {
-    id:9,
-    game:"Sawaki",
-    date: new Date()
-  }
-]
+
 
 export default function page({}: Props) {
   return (
@@ -68,29 +23,20 @@ export default function page({}: Props) {
               </div>
               <div className="grid grid-cols-3  h-full w-full gap-4 my-4 items-center  justify-center  ">
 
-                {
-                  games.map((val)=>(
+              {/* screen */}
 
-                <div key={val.id} className="bg-white py-1 h-[80px] text-center justify-center text-black shadow-lg mx-auto rounded-sm  text-sm font-mono font-medium  w-24 ">
-                  <p className="uppercase">
-                    {val.game}
-                    </p>
-                    <p>{val.date.toLocaleDateString("en-us",{day:"numeric",month:"short"})}</p>
-                </div>
-                  ))
-                }
-
-               
-
+        
               </div>
               <div>v3.3</div>
 
             </div>
 
 
+
+            <div className="p-4">
               {/* keypad */}
-            <div>
-              
+              <Keypad/>
+
             </div>
 
           </div>

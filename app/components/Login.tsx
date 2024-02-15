@@ -28,14 +28,14 @@ export default function Login({}: Props) {
     // }
     const getPinCode = (val:string)=>{
         
-        if (val === 'clear') {
+        if (val === 'c') {
            setPassword('');
            setErrormessage(" ")
 
-    }   else if (val === 'enter') {
+    }   else if (val === 'v') {
       // Call handleSubmit
           if(dbPassword === password){
-            router.push("/mainmenu")
+            router.push("/gamemenu")
           }else{
             setErrormessage("pls enter Correct PinCode")
           }
@@ -58,7 +58,7 @@ export default function Login({}: Props) {
      {
       erromessage && (
 
-        <p className="text-white text-xs text-center pt-2">{erromessage}</p>
+        <p className="text-red-900 text-xs text-center pt-2">{erromessage}</p>
       )
      }
 
