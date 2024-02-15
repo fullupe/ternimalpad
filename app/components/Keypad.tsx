@@ -14,7 +14,7 @@ export default function Keypad({}: Props) {
       {["F1","F2","F3","F4","F5",1, 2, 3, 4, "A",5, 6, 7, 8, "C",9,0, ".",'V'].map((key: any) => (
         <button
           key={key}
-          className="bg-green-200 p-4 rounded-md text-xl font-semibold hover:bg-green-300 focus:outline-none"
+          className={`bg-green-200 p-4 rounded-md text-xl font-semibold hover:bg-green-300 focus:outline-none ${key === 'V' ? 'col-span-2' : ''} ${key==='C'? 'bg-red-400':''} ${key==='A'? 'bg-yellow-300':''}`}
           onClick={() => handleClick(key)}
         >
           <p className='text-black text-2xl'>
