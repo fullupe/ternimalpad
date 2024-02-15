@@ -1,5 +1,4 @@
 
-import Keypad from "./components/Keypad";
 import Login from "./components/Login";
 export default  function Home() {
   return (
@@ -8,7 +7,7 @@ export default  function Home() {
      <div>
        Pincode
        </div>
-       <Keypad />
+     
      {/* <Login /> */}
     </main>
   );
