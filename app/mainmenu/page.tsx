@@ -1,5 +1,7 @@
-import React from 'react'
+"use client"
+import React, { useEffect, useState } from 'react'
 import Keypad from '../components/Keypad'
+import {useGameSelectionStore} from "../store"
 
 
 type Props = {}
@@ -7,6 +9,95 @@ type Props = {}
 
 
 export default function page({}: Props) {
+  const selectGame = useGameSelectionStore((state)=>state.gameSelected);
+
+  const [selectedKey, setSelectedKey] = useState('');
+
+  const [inputFields, setInputFields] = useState([]);
+
+  const [number,  setNumber]=useState("")
+
+
+  console.log("okay",selectedKey)
+
+  useEffect(() => {
+    setSelectedKey("F2");
+    generateInputFields()
+  
+    
+  }, [])
+  
+
+  const generateInputFields = () => {
+    const numInputs = parseInt(selectedKey.slice(1));
+    const fields = [];
+    for (let i = 0; i < numInputs; i++) {
+      fields.push(
+        <div key={i} className="">
+        
+          <input maxLength={2} minLength={2} className="flex  h-12 w-12 rounded-full text-center " type="text" id={`input-${i}`} />
+        </div>
+      );
+    }
+    return fields;
+  };
+
+  const handleKeyChange = (event:any) => {
+
+  
+     // Clear existing fields
+
+   if(event ==="C"){
+    setSelectedKey(event);
+    generateInputFields()
+
+   }else if(event === "V"){
+    setSelectedKey(event);
+    generateInputFields()
+
+    
+   }else if(event === "A"){
+    setSelectedKey(event);
+    generateInputFields()
+    //setInputFields([]);
+
+
+   }else if(event === "F1"){
+    setSelectedKey(event);
+    generateInputFields()
+
+  
+   }else if(event === "F2"){
+    setSelectedKey(event);
+    generateInputFields()
+
+
+   }else if(event === "F3"){
+    setSelectedKey(event);
+    generateInputFields()
+ 
+  }else if(event === "F4"){
+    setSelectedKey(event);
+    generateInputFields()
+
+  
+   }else if (event === "F5"){
+    setSelectedKey(event);
+    generateInputFields()
+
+
+   }else if (event === "."){
+    setSelectedKey(event);
+
+
+   }else{
+
+    setNumber(event)
+   }
+
+  };
+
+
   return (
     <div className=" h-screen justify-center items-center"> 
 
@@ -21,13 +112,15 @@ export default function page({}: Props) {
                 <p>Machine #:1000</p>
                 <p>{new Date().toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) }</p>
               </div>
-              <div className="grid grid-cols-3  h-full w-full gap-4 my-4 items-center  justify-center  ">
+              <div className=" flex   h-full w-full  my-4d items-center  justify-center  ">
 
               {/* screen */}
-
+              <div className=" w-full flex  justify-center items-center space-x-2 ">{  generateInputFields()}</div>
         
               </div>
-              <div>v3.3</div>
+              <div>v3.3 {selectedKey}</div>
+             
+              
 
             </div>
 
@@ -35,7 +128,7 @@ export default function page({}: Props) {
 
             <div className="p-4">
               {/* keypad */}
-              <Keypad/>
+              <Keypad handleKeyChange={handleKeyChange}/>
 
             </div>
 
