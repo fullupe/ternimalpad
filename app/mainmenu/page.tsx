@@ -15,14 +15,14 @@ export default function page({}: Props) {
 
   const [inputFields, setInputFields] = useState([]);
 
-  const [number,  setNumber]=useState("")
+  const [number,  setNumber]=useState<string[]>([])
 
 
-  console.log("okay",selectedKey)
+  console.log("okay",number)
 
   useEffect(() => {
-    setSelectedKey("F2");
-    generateInputFields()
+     //setSelectedKey("F2");
+    ///generateInputFields()
   
     
   }, [])
@@ -33,9 +33,19 @@ export default function page({}: Props) {
     const fields = [];
     for (let i = 0; i < numInputs; i++) {
       fields.push(
-        <div key={i} className="">
-        
-          <input maxLength={2} minLength={2} className="flex  h-12 w-12 rounded-full text-center " type="text" id={`input-${i}`} />
+        <div key={i} className="flex">
+
+     <input  maxLength={2} minLength={2} className="flex  h-12 w-12 rounded-full text-center " type="text" id={`input-${i}`} />
+
+        {/* {
+          number.map((v)=>(
+            <div className="flex space-2">
+
+              <input value={v}  maxLength={2} minLength={2} className="flex  h-12 w-12 rounded-full text-center " type="text" id={`input-${i}`} />
+            </div>
+          ))
+        } */}
+
         </div>
       );
     }
@@ -92,7 +102,7 @@ export default function page({}: Props) {
 
    }else{
 
-    setNumber(event)
+    setNumber([...number,event])
    }
 
   };
@@ -115,7 +125,11 @@ export default function page({}: Props) {
               <div className=" flex   h-full w-full  my-4d items-center  justify-center  ">
 
               {/* screen */}
-              <div className=" w-full flex  justify-center items-center space-x-2 ">{  generateInputFields()}</div>
+              <div className=" w-full flex  justify-center items-center space-x-2 ">
+
+                { generateInputFields()}
+
+                </div>
         
               </div>
               <div>v3.3 {selectedKey}</div>
