@@ -13,7 +13,9 @@ export default function page({}: Props) {
 
   const [selectedKey, setSelectedKey] = useState('');
 
-  const [inputFields, setInputFields] = useState([]);
+  const myArray = new Array(10)
+
+  const [inputFields, setInputFields] = useState<string[]>([]);
 
   const [number,  setNumber]=useState<string[]>([])
 
@@ -102,8 +104,27 @@ export default function page({}: Props) {
 
    }else{
 
-    setNumber([...number,event])
-   }
+    //setNumber([...number,event])
+
+
+    
+
+    setInputFields(prevInputs => {
+      const updatedInputs = [...prevInputs];
+
+      const lastInput = updatedInputs[updatedInputs.length - 1];
+      if (lastInput && lastInput.length < 2) {
+        updatedInputs[updatedInputs.length - 1] += event;
+        
+      } else if(inputFields.length < 10) {
+
+
+        updatedInputs.push(event);
+      }
+      return updatedInputs;
+    });
+  }
+   //}
 
   };
 
@@ -127,7 +148,30 @@ export default function page({}: Props) {
               {/* screen */}
               <div className=" w-full flex  justify-center items-center space-x-2 ">
 
-                { generateInputFields()}
+                {/* { generateInputFields()} */}
+
+                {inputFields.map((input, index) => (
+                <div key={index} className="">
+                  <input
+                    maxLength={2}
+                    minLength={2}
+                    className="flex h-12 w-12 rounded-full text-center"
+                    type="text"
+                    id={`input-${index}`}
+                    value={input}
+                    onChange={e => {
+                      const newValue = e.target.value;
+                      setInputFields(prevInputs => {
+                        const updatedInputs = [...prevInputs];
+                        updatedInputs[index] = newValue;
+                        return updatedInputs;
+                      });
+                    }}
+                  />
+    </div>
+  ))}
+
+
 
                 </div>
         
